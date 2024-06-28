@@ -85,7 +85,13 @@ class Catalog:
 
 # Programa principal
 
-catalog = Catalog(host='localhost', user='root', password='root', database='myapp')
+catalog = Catalog(host='USUARIO.mysql.pythonanywhere-services.com',
+user='USUARIO', password='PASSWORD', database='USUARIO$miapp')
+# host: Es el que nos proporcionó el sitio. Lo podemos ver en la pestaña "Databases"
+# user: Es el usuario de la base de datos,
+# password: Es el password que elegimos para la base de datos
+# database: El nombre de la base de datos, generalmente tu_usuario$base_de_datos
+
 '''
 # Agregamos películas a la tabla
 catalog.add_movie('The Super Mario Bros Movie', 'Animation, Family, Adventure, Fantasy, Comedy', '1h 33m', '2023', ['Aaron Horvath', 'Michael Jelenic'])
@@ -123,7 +129,7 @@ for pelicula in peliculas:
     print(pelicula)
 '''
 # Carpeta para guardar las imagenes
-destination_path = './static/imagenes/'
+destination_path = '/home/USUARIO/mysite/static/images/'
 
 
 @app.route('/')
