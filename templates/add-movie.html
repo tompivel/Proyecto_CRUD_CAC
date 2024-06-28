@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Movie 🚀</title>
+<link rel="stylesheet" href="static\css\style.css">
+</head>
+<body>
+<header>
+<nav class="navbar-index">
+<img class="logo-nav" src="./static/images/logos-nav.webp" alt="logo agencia de aprendizaje">
+</nav>
+</header>
+<div class="logo-centered">
+    <img src="./static/images/logo_Codo.jpg" alt="logo">
+</div>
+<h1>Add Movies to Inventory</h1><br>
+<!--enctype="multipart/form-data" is necessary to send files to the backend.-->
+<form id="form" enctype="multipart/form-data">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br>
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" required><br>
+    <label for="duration">Duration:</label>
+    <input type="number" id="duration" name="duration" required><br>
+    <label for="directors">Directors:</label>
+    <input type="text" id="directors" name="directors" required><br><br><br>
+    <label for="releaseDate">Release Date:</label>
+    <input type="number" id="releaseDate" name="releaseDate">
+    <label for="movieImage">Movie Image:</label>
+    <input type="file" id="movieImage" name="image">
+    <button type="submit">Add Movie</button>
+    <a href="index.html">Main Menu</a>
+</form>
+<script>
+    const URL = "http://127.0.0.1:5000/"
+    document.getElementById('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        fetch(URL + 'movies', {
+            method: 'POST',
+            body: formData
+        })
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error adding the movie.');
+            }
+        })
+        .then(function (data) {
+            alert('Movie added successfully.');
+        })
+        .catch(function (error) {
+            alert('Error adding the movie.');
+        })
+        .finally(function () {
+            document.getElementById('title').value = "";
+            document.getElementById('genre').value = "";
+            document.getElementById('duration').value = "";
+            document.getElementById('movieImage').value = "";
+            document.getElementById('releaseDate').value = "";
+            document.getElementById('directors').value = "";
+        });
+    });
+</script>
+</body>
+</html>

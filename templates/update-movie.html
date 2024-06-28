@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Movie 🚀</title>
+    <link rel="stylesheet" href="static\css\style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar-index">
+            <img class="logo-nav" src="./static/images/nav-logos.webp" alt="learning agency logo">
+        </nav>
+    </header>
+    <div class="center-logo">
+        <img src="./static/images/logo_Codo.jpg" alt="logo">
+    </div>
+    <h1>Modify Inventory Movies</h1><br>
+    <div id="app">
+        <form id="get-movie-form">
+            <label for="code">Code:</label>
+            <input type="text" id="code" required><br>
+            <button type="submit">Modify Movie</button>
+            <a href="index.html">Main Menu</a>
+        </form>
+        <div id="movie-data" style="display: none;">
+            <h2>Movie Data</h2>
+            <form id="save-changes-form">
+                <label for="modifyTitle">Title:</label>
+                <input type="text" id="modifyTitle" required><br>
+                <label for="modifyGenre">Genre:</label>
+                <input type="text" id="modifyGenre" required><br>
+                <label for="modifyDuration">Duration (minutes):</label>
+                <input type="number" id="modifyDuration" required><br>
+                <label for="modifyYear">Release Year:</label>
+                <input type="number" id="modifyYear" required><br>
+                <label for="modifyDirectors">Directors:</label>
+                <input type="text" id="modifyDirectors" required><br>
+                <img id="current-image" style="max-width: 200px; display: none;">
+                <img id="preview-image" style="max-width: 200px; display: none;">
+                <label for="newImage">New Image:</label>
+                <input type="file" id="newImage"><br><br>
+                <button type="submit">Save Changes</button>
+                <a href="modifications.html">Cancel</a>
+            </form>
+        </div>
+    </div>
+    <script>
+        const URL = "http://127.0.0.1:5000/";
+
+        let code = '';
+        let title = '';
+        let genre = '';
+        let duration = '';
+        let year = '';
+        let directors = '';
+        let imageUrl = '';
+        let selectedImage = null;
+        let tempImageUrl = null;
+        let showMovieData = false;
+
+        document.getElementById('get-movie-form').addEventListener('submit', getMovie);
+        document.getElementById('save-changes-form').addEventListener('submit', saveChanges);
+        document.getElementById('newImage').addEventListener('change', selectImage);
+
+        function getMovie(event) {
+            event.preventDefault();
+            code = document.getElementById('code').value;
+            fetch(URL + 'movies/' + code)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error fetching movie data.');
+                    }
+                })
+                .then(data => {
+                    title = data.title;
+                    genre = data.genre;
+                    duration = data.duration;
+                    year = data.year;
+                    directors = data.directors;
+                    imageUrl = data.image_url;
+                    showMovieData = true;
+                    showForm();
+                })
+                .catch(error => {
+                    alert('Code not found.');
+                });
+        }
+
+        function showForm() {
+            if (showMovieData) {
+                document.getElementById('modifyTitle').value = title;
+                document.getElementById('modifyGenre').value = genre;
+                document.getElementById('modifyDuration').value = duration;
+                document.getElementById('modifyYear').value = year;
+                document.getElementById('modifyDirectors').value = directors;
+                const currentImage = document.getElementById('current-image');
+                if (imageUrl && !selectedImage) {
+                    currentImage.src = './static/images/' + imageUrl;
+                    currentImage.style.display = 'block';
+                } else {
+                    currentImage.style.display = 'none';
+                }
+                document.getElementById('movie-data').style.display = 'block';
+            } else {
+                document.getElementById('movie-data').style.display = 'none';
+            }
+        }
+
+        function selectImage(event) {
+            const file = event.target.files[0];
+            selectedImage = file;
+            tempImageUrl = URL.createObjectURL(file);
+            const previewImage = document.getElementById('preview-image');
+            previewImage.src = tempImageUrl;
+            previewImage.style.display = 'block';
+        }
+
+        function saveChanges(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append('code', code);
+            formData.append('title', document.getElementById('modifyTitle').value);
+            formData.append('genre', document.getElementById('modifyGenre').value);
+            formData.append('duration', document.getElementById('modifyDuration').value);
+            formData.append('year', document.getElementById('modifyYear').value);
+            formData.append('directors', document.getElementById('modifyDirectors').value);
+            if (selectedImage) {
+                formData.append('image', selectedImage, selectedImage.name);
+            }
+            fetch(URL + 'movies/' + code, {
+                method: 'PUT',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error saving movie changes.');
+                }
+            })
+            .then(data => {
+                alert('Movie updated successfully.');
+                resetForm();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error updating movie.');
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('code').value = '';
+            document.getElementById('modifyTitle').value = '';
+            document.getElementById('modifyGenre').value = '';
+            document.getElementById('modifyDuration').value = '';
+            document.getElementById('modifyYear').value = '';
+            document.getElementById('modifyDirectors').value = '';
+            document.getElementById('newImage').value = '';
+            const currentImage = document.getElementById('current-image');
+            currentImage.style.display = 'none';
+            const previewImage = document.getElementById('preview-image');
+            previewImage.style.display = 'none';
+            code = '';
+            title = '';
+            genre = '';
+            duration = '';
+            year = '';
+            directors = '';
+            imageUrl = '';
+            selectedImage = null;
+            tempImageUrl = null;
+            showMovieData = false;
+            document.getElementById('movie-data').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
