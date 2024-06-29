@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 import mysql.connector 
 import os
@@ -85,8 +85,8 @@ class Catalog:
 
 # Programa principal
 
-catalog = Catalog(host='USUARIO.mysql.pythonanywhere-services.com',
-user='USUARIO', password='PASSWORD', database='USUARIO$miapp')
+catalog = Catalog(host='proyectocac24171.mysql.pythonanywhere-services.com',
+user='proyectocac24171', password='mobivav741', database='proyectocac24171$miapp')
 # host: Es el que nos proporcionó el sitio. Lo podemos ver en la pestaña "Databases"
 # user: Es el usuario de la base de datos,
 # password: Es el password que elegimos para la base de datos
@@ -129,13 +129,13 @@ for pelicula in peliculas:
     print(pelicula)
 '''
 # Carpeta para guardar las imagenes
-destination_path = '/home/USUARIO/mysite/static/images/'
+destination_path = '/home/proyectocac24171/mysite/static/images/'
 
 
-@app.route('/')
+""" @app.route('/')
 def home():
     return render_template('template.html', title='Home Page',
-    heading='Welcome!', items=['Item 1', 'Item 2', 'Item 3'])
+    heading='Welcome!', items=['Item 1', 'Item 2', 'Item 3']) """
 
 @app.route('/movies', methods=['GET'])
 def list_movies():

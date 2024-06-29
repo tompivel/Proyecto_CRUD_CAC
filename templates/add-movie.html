@@ -35,8 +35,8 @@
     <a href="index.html">Main Menu</a>
 </form>
 <script>
-    const URL = "https://USUARIO.pythonanywhere.com/";
-    document.getElementById('form').addEventListener('submit', function (event) {
+        const URL = "http://proyectocac24171.pythonanywhere.com/";
+        document.getElementById('form').addEventListener('submit', function (event) {
         event.preventDefault();
         var formData = new FormData(this);
         fetch(URL + 'movies', {
