@@ -6,7 +6,7 @@ import os
 import time
 #--------------------------------------------------------------------
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://tompivel.github.io"}})
 #------------------------------CLASS CATALOG--------------------------------------
 class Catalog:
     def __init__(self, host, user, password, database):
