@@ -55,9 +55,9 @@
                             <td>${movie.title}</td>
                             <td>${movie.genre}</td>
                             <td>${movie.duration}</td>
-                            <td>${movie.release_date}</td>
+                            <td>${movie.release_year}</td>
                             <td>${movie.directors}</td>
-                            <td><img src="./static/imagenes/${movie.image_url}" alt="Movie Image" style="width: 100px;"></td>
+                            <td><img src="./static/images/${movie.image_url}" alt="Movie Image" style="width: 100px;"></td>
                             <td><button onclick="deleteMovie('${movie.id}')">Delete</button></td>
                         `;
                     });
