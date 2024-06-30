@@ -53,7 +53,7 @@
         let title = '';
         let genre = '';
         let duration = '';
-        let year = '';
+        let release_year = '';
         let directors = '';
         let imageUrl = '';
         let selectedImage = null;
@@ -79,7 +79,7 @@
                     title = data.title;
                     genre = data.genre;
                     duration = data.duration;
-                    year = data.year;
+                    release_year = data.release_year;
                     directors = data.directors;
                     imageUrl = data.image_url;
                     showMovieData = true;
@@ -95,7 +95,7 @@
                 document.getElementById('modifyTitle').value = title;
                 document.getElementById('modifyGenre').value = genre;
                 document.getElementById('modifyDuration').value = duration;
-                document.getElementById('modifyYear').value = year;
+                document.getElementById('modifyYear').value = release_year;
                 document.getElementById('modifyDirectors').value = directors;
                 const currentImage = document.getElementById('current-image');
                 if (imageUrl && !selectedImage) {
@@ -126,7 +126,7 @@
             formData.append('title', document.getElementById('modifyTitle').value);
             formData.append('genre', document.getElementById('modifyGenre').value);
             formData.append('duration', document.getElementById('modifyDuration').value);
-            formData.append('year', document.getElementById('modifyYear').value);
+            formData.append('release_year', document.getElementById('modifyYear').value);
             formData.append('directors', document.getElementById('modifyDirectors').value);
             if (selectedImage) {
                 formData.append('image', selectedImage, selectedImage.name);
