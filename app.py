@@ -152,6 +152,9 @@ def get_movie(id):
 
 @app.route('/movies', methods=['POST'])
 def add_movie():
+    print(request.form)  # Debugging: Print the form data
+    print(request.files)  # Debugging: Print the files data
+
     title = request.form['title']
     genre = request.form['genre']
     duration = request.form['duration']
