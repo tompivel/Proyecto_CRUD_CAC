@@ -5,17 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie List 🚀</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <nav class="navbar-index">
-            <img class="logo-nav" src="./static/images/logos-nav.webp" alt="logo agencia de aprendizaje">
+    <header class="header">
+        <nav class="navegacion">
+            <a class="anclaLogo" href="#">
+                <i class="fas fa-film" aria-hidden="true"></i>
+                <span>CAC-Movies</span>
+            </a>
         </nav>
     </header>
-    <div class="logo-centered">
-        <img src="./static/images/logo_Codo.jpg" alt="logo">
-    </div>
+    
     <h1>Movie List</h1><br>
     <table>
         <thead>
@@ -29,7 +32,7 @@
                 <th>Image</th>
             </tr>
         </thead>
-        <tbody id="movieTable"> </tbody>
+        <tbody id="movieTable"></tbody>
     </table><br>
 
     <div class="centered-container">
@@ -55,8 +58,8 @@
                         '<td align="right">' + movie.genre + '</td>' +
                         '<td align="right">' + movie.duration + '</td>' +
                         '<td align="right">' + movie.release_year + '</td>' +
-                        '<td align="right">' + movie.directors + '</td>'+'<td> <img src=https://www.pythonanywhere.com/user/proyectocac24171/files/home/proyectocac24171/mysite/static/images/'  + movie.image_url +
-                        ' alt="Movie Image" style="width: 100px;"></td>';
+                        '<td align="right">' + movie.directors + '</td>' +
+                        '<td><img src="https://www.pythonanywhere.com/user/proyectocac24171/files/home/proyectocac24171/mysite/static/images/' + movie.image_url + '" alt="Movie Image" style="width: 100px;"></td>';
                     movieTable.appendChild(row);
                 }
             })

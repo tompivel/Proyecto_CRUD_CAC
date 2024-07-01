@@ -5,18 +5,43 @@
     margin: 0;
 }
 
+header {
+    height: 80px;
+    background-color: #9f3647;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.anclaLogo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.anclaLogo i {
+    margin-right: 10px;
+}
+
 body {
-    background-color: #1d1a39;
+    background-color: #181419;
     color: white;
 }
 
-.centered-container{
+.centered-container {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.logo-centered{
+.logo-centered {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,11 +51,11 @@ body {
 
 .navbar-index {
     margin: 0;
-    padding: 0;
+    padding: 30px;
     top: 0;
     width: 100vw;
     height: 100px;
-    background-color: #390E8C;
+    background-color: #9f3647;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -54,7 +79,7 @@ p {
     padding: 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1{
     text-align: center;
     color: #ffd200;
 }
@@ -63,8 +88,8 @@ form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #390e8c;
-    border: 1px solid lightslategray;
+    background-color: #9f3647;
+    border: 1px solid #fdab13;
     border-radius: 5px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
@@ -73,8 +98,8 @@ table {
     max-width: 90%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #390e8c;
-    border: 1px solid lightslategray;
+    background-color: #9f3647;
+    border: 1px solid #fdab13;
     border-radius: 5px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
@@ -96,7 +121,7 @@ textarea {
 
 input[type="submit"] {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #fdab13;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -107,25 +132,35 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-button {
-    padding: 8px;
-    margin: 4px;
-    background-color: #007bff;
+form a {
+    padding: 4px;
+    background-color: #fdab13;
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+button {
+    padding: 8px;
+    margin: 4px;
+    background-color: #181419;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-a {
+div a {
     padding: 8px;
     margin: 4px;
     background-color: #fdab13;
-    color: #1d1a39;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -135,6 +170,25 @@ a {
 }
 
 a:hover {
-    background-color: #1d1a39;
+    background-color: #181419;
     color: #fdab13;
+}
+a {
+    padding: 20px
+    }
+
+@media (max-width: 768px) {
+    .header {
+        height: initial;
+    }
+    .navegacion {
+        margin-left: 10px;
+        margin-right: 10px;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .anclaLogo {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
 }
