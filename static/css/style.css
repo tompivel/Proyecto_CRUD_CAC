@@ -24,6 +24,7 @@ nav {
     color: #ffffff;
     font-weight: 700;
     font-size: 1.2rem;
+    padding: 20px
 }
 
 .anclaLogo i {
@@ -92,6 +93,7 @@ form {
     border: 1px solid #fdab13;
     border-radius: 5px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    
 }
 
 table {
@@ -108,9 +110,9 @@ label {
     display: block;
     margin-bottom: 5px;
     font-size: 20px;
-    color: #fdab13;
-    font-weight: bold;
-    text-aling: left;
+    color: #ffffff;
+    text-align: left;
+    font-weight: lighter;
 }
 
 input[type="text"],
@@ -137,7 +139,7 @@ input[type="submit"]:hover {
 }
 
 form a {
-    padding: 4px;
+    padding: 8px;
     background-color: #fdab13;
     color: #ffffff;
     border: none;
@@ -145,6 +147,7 @@ form a {
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
+    font-size: 43%;
 }
 
 button {
@@ -177,9 +180,6 @@ a:hover {
     background-color: #181419;
     color: #fdab13;
 }
-a {
-    padding: 20px
-    }
 
 @media (max-width: 768px) {
     .header {
