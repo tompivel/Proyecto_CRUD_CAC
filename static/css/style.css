@@ -110,6 +110,7 @@ label {
     font-size: 20px;
     color: #fdab13;
     font-weight: bold;
+    text-aling: left;
 }
 
 input[type="text"],
